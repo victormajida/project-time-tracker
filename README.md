@@ -24,4 +24,4 @@ Developed for the Godot community by:
 
 ## License
 
-Code licensed under the [MIT License](https://github.com/victormajida/project-time-tracker/blob/main/LICENSE).
+Code licensed under the [MIT License](https://github.com/victormajida/project-time-tracker/blob/main/LICENSE.md).
