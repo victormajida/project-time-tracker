@@ -37,14 +37,14 @@ custom_minimum_size = Vector2(2.08165e-12, 88)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Current Session
-[color=green]03:45[/color][/center]"
+[color=green]06[/color][/center]"
 
 [node name="LastSession" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 88)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Last Session
-[color=green]~ 40s[/color][/center]"
+[color=green]~ 3m, 46s[/color][/center]"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -56,7 +56,7 @@ layout_mode = 2
 theme_override_constants/line_separation = 4
 bbcode_enabled = true
 text = "Combined Time Over [color=gold]9 Days[/color]
-[color=white]~ 6 hours, 34 minutes, 1 second[/color]"
+[color=white]~ 6 hours, 34 minutes, 8 seconds[/color]"
 fit_content = true
 autowrap_mode = 2
 
