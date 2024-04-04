@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256"
+   height="256"
+   viewBox="0 0 67.733332 67.733333"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="1.6819304"
+     inkscape:cx="126.04564"
+     inkscape:cy="134.66669"
+     inkscape:window-width="1440"
+     inkscape:window-height="900"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="1.0583333"
+       spacingy="1.0583333"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="8"
+       dotted="true"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient8">
+      <stop
+         style="stop-color:#28c9e9;stop-opacity:0;"
+         offset="0"
+         id="stop10" />
+      <stop
+         style="stop-color:#28c9e9;stop-opacity:1;"
+         offset="1"
+         id="stop11" />
+    </linearGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4">
+      <circle
+         style="fill:#0a85b6;fill-opacity:1;stroke-width:2.55174;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+         id="circle5"
+         cx="33.866669"
+         cy="33.866669"
+         r="32.808334"
+         inkscape:label="circle4" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5">
+      <circle
+         style="fill:#0a85b6;fill-opacity:1;stroke-width:2.55174;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+         id="circle6"
+         cx="33.866669"
+         cy="33.866669"
+         r="32.808334"
+         inkscape:label="circle4" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath7">
+      <circle
+         style="display:inline;fill:#0a85b6;fill-opacity:1;stroke-width:2.55174;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+         id="circle8"
+         cx="33.866669"
+         cy="33.866669"
+         r="32.808334"
+         clip-path="url(#clipPath5)" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="display:inline;fill:#080891;fill-opacity:1;stroke-width:2.55174;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3"
+       cx="33.866669"
+       cy="33.866669"
+       r="32.808334"
+       clip-path="url(#clipPath5)" />
+    <path
+       style="color:#000000;display:inline;fill:#3e94e0;fill-opacity:1;stroke-width:1.00012;stroke-dasharray:none"
+       d="m 34.178443,22.050812 c 0,0 12.71122,1.315584 14.600489,6.262779 5.568084,14.58045 -19.773935,42.442069 -19.773935,42.442069 l 33.847728,-6.002149 c 0,0 -1.371363,-27.287933 -10.029197,-36.43992 -4.505616,-4.762777 -18.645085,-6.262779 -18.645085,-6.262779 z"
+       id="path2"
+       sodipodi:nodetypes="caccac"
+       clip-path="url(#clipPath4)" />
+    <path
+       style="color:#000000;display:inline;fill:#2ccaf2;fill-opacity:1;-inkscape-stroke:none"
+       d="m 33.863612,22.277377 c 0,0 9.107821,2.458806 8.896759,6.036341 C 41.855251,43.655639 1.8283236,49.534262 1.8283236,49.534262 L 19.389052,64.810464 c 0,0 30.092521,-21.883992 26.531605,-36.496873 C 44.85655,23.946832 33.863612,22.277377 33.863612,22.277377 Z"
+       id="path6"
+       sodipodi:nodetypes="caccac"
+       clip-path="url(#clipPath7)" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2" />
+</svg>
