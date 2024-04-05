@@ -17,6 +17,8 @@ Works with Godot 4.2+
 * Clone this repository or download it as ZIP. Copy the `addons/project_time_tracker` folder into your project's addons folder.
 * Open the plugins menu in Project Settings and enable the "Project Time Tracker" plugin. The first time it runs, a file named "ptt.json" will be created and stored in the "res://" folder.
 
+Also available on the Godot Asset Library: https://godotengine.org/asset-library/asset/2836
+
 ## Credit
 Developed for the Godot community by:
 
