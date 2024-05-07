@@ -1,4 +1,41 @@
+@tool
 class_name PTTUtils
+
+const PTT_FILE_NAME = "res://ptt.json"
+
+const SD := "sd"    # Tracking Start Date
+const ST := "st"    # Current Session Time
+const LS := "ls"    # Last Session Time
+const TT := "tt"    # Tracking Total Time
+const TD := "td"    # Total On/Off Days
+const LO := "lo"    # Last Opened Date
+const SN := "sn"    # Short Notation Setting
+
+const defaults = { ST: 0, LS: 0, TT: 0, TD: 0, SD: 0, LO: "", SN: false }
+
+static var ptt: PTT = PTT.new()
+
+static func load_data() -> Dictionary:
+	if not FileAccess.file_exists(PTT_FILE_NAME):
+		ptt._data = defaults
+		save_data()
+	var file = FileAccess.open(PTT_FILE_NAME, FileAccess.READ)
+	var data = JSON.parse_string(file.get_as_text())
+	if data is Dictionary:
+		for key in defaults:
+			if key not in data:
+				data[key] = defaults[key]
+		file.close()
+		return data
+	else:
+		file.close()
+		printerr("Error loading %s file" % [PTT_FILE_NAME])
+		return {}
+
+static func save_data():
+	var file = FileAccess.open(PTT_FILE_NAME, FileAccess.WRITE)
+	file.store_string(JSON.stringify(ptt._data))
+	file.close()
 
 static func get_date(unix_time: int) -> String:
 	return Time.get_date_string_from_unix_time(unix_time)
@@ -78,3 +115,30 @@ static func bb_text(title: String, time: float, dhms: bool = false) -> String:
 	var _bb_color: String = color_temp(time)
 	var _str := "[center]%s\n[color=%s]%s[/color][/center]" % [title, _bb_color, _time_format]
 	return _str
+
+
+# #######################
+# Accessibility Functions
+# #######################
+
+# returns the date timestamp of when tracking started.
+static func tracking_start_time() -> int:
+	return ptt._data[PTTUtils.SD]
+
+# returns the total (combined sessions) time integer.
+static func total_active_time() -> int:
+	return ptt._data[PTTUtils.TT]
+	
+# returns the total active time in readable string format, suffix defaults to "elapsed" -> "6 hours 2 minutes elapsed"
+static func total_active_time_string(suffix: String = "elapsed") -> String:
+	var dhms: String = PTTUtils.secondsToDhms(total_active_time(), true)
+	return dhms + " " + suffix
+
+# returns the integer of total days of work on the project.
+static func total_period() -> int:
+	return ptt._data[PTTUtils.TD]
+
+# returns the total days of work on the project in readable string format, suffix defaults to "elapsed" -> "1 month 3 days... elapsed"
+static func total_period_string(suffix: String = "elapsed") -> String:
+	var YMd: String = PTTUtils.daysToYMD(total_period())
+	return YMd + " " + suffix
