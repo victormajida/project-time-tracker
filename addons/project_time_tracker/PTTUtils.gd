@@ -17,8 +17,7 @@ static var ptt: PTT = PTT.new()
 
 static func load_data() -> Dictionary:
 	if not FileAccess.file_exists(PTT_FILE_NAME):
-		ptt._data = defaults
-		save_data()
+		save_data(defaults)
 	var file = FileAccess.open(PTT_FILE_NAME, FileAccess.READ)
 	var data = JSON.parse_string(file.get_as_text())
 	if data is Dictionary:
@@ -32,9 +31,9 @@ static func load_data() -> Dictionary:
 		printerr("Error loading %s file" % [PTT_FILE_NAME])
 		return {}
 
-static func save_data():
+static func save_data(data = ptt._data):
 	var file = FileAccess.open(PTT_FILE_NAME, FileAccess.WRITE)
-	file.store_string(JSON.stringify(ptt._data))
+	file.store_string(JSON.stringify(data))
 	file.close()
 
 static func get_date(unix_time: int) -> String:
