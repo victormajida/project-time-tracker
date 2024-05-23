@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://djywon7mdvm74"]
+[gd_scene load_steps=2 format=3 uid="uid://byvcnatlevf76"]
 
 [ext_resource type="Script" path="res://addons/project_time_tracker/ptt_dock.gd" id="1_7wcfh"]
 
 [node name="Project Time Tracker" type="Control" node_paths=PackedStringArray("lbl_CST", "lbl_LST", "lbl_TOOD", "cb_sn", "lbl_StartDate")]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,30 +34,29 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="CurrentSession" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 88)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Current Session
-[color=green]02:28[/color][/center]"
+[color=green]02:11[/color][/center]"
+fit_content = true
 
 [node name="LastSession" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 88)
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Last Session
-[color=green]~ 40s[/color][/center]"
+[color=green]~ 22s[/color][/center]"
+fit_content = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="TotalOnOffDays" type="RichTextLabel" parent="MarginContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 128)
 layout_mode = 2
 theme_override_constants/line_separation = 4
 bbcode_enabled = true
-text = "Combined Time Over [color=gold]12 Days[/color]
-[color=white]~ 10 hours, 1 minute, 26 seconds[/color]"
+text = "Combined Time Over [color=gold]1 Day[/color]
+[color=white]~ 13 minutes[/color]"
 fit_content = true
 autowrap_mode = 2
 
@@ -69,7 +69,7 @@ text = "Short Notation"
 [node name="StartDate" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Tracking Started:
-2024-02-21 16:35:38"
+2024-05-23 15:20:40"
 horizontal_alignment = 1
 vertical_alignment = 1
 
