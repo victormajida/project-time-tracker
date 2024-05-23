@@ -11,66 +11,71 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7wcfh")
-lbl_CST = NodePath("MarginContainer/VBoxContainer/CurrentSession")
-lbl_LST = NodePath("MarginContainer/VBoxContainer/LastSession")
-lbl_TOOD = NodePath("MarginContainer/VBoxContainer/VBoxContainer/TotalOnOffDays")
-cb_sn = NodePath("MarginContainer/VBoxContainer/VBoxContainer/CheckBox")
-lbl_StartDate = NodePath("MarginContainer/VBoxContainer/StartDate")
+lbl_CST = NodePath("ScrollContainer/MarginContainer/VBoxContainer/CurrentSession")
+lbl_LST = NodePath("ScrollContainer/MarginContainer/VBoxContainer/LastSession")
+lbl_TOOD = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/TotalOnOffDays")
+cb_sn = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/CheckBox")
+lbl_StartDate = NodePath("ScrollContainer/MarginContainer/VBoxContainer/StartDate")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="CurrentSession" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="CurrentSession" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Current Session
-[color=green]02:11[/color][/center]"
+[color=green]05:46[/color][/center]"
 fit_content = true
 
-[node name="LastSession" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="LastSession" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Last Session
-[color=green]~ 22s[/color][/center]"
+[color=green]~ 4s[/color][/center]"
 fit_content = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="TotalOnOffDays" type="RichTextLabel" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="TotalOnOffDays" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/line_separation = 4
 bbcode_enabled = true
 text = "Combined Time Over [color=gold]1 Day[/color]
-[color=white]~ 13 minutes[/color]"
+[color=white]~ 24 minutes, 26 seconds[/color]"
 fit_content = true
 autowrap_mode = 2
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Short Notation"
 
-[node name="StartDate" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="StartDate" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Tracking Started:
 2024-05-23 15:20:40"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="toggled" from="MarginContainer/VBoxContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
