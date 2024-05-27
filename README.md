@@ -33,7 +33,12 @@ Also available on the Godot Asset Library: https://godotengine.org/asset-library
 ## Credit
 Developed for the Godot community by:
 
-| **Victor Majida** | (https://github.com/victormajida)
+| **Victor Majida** | (https://github.com/victormajida) 
+
+and other contributors:
+
+(https://github.com/peachey2k2)
+
 
 ## License
 
