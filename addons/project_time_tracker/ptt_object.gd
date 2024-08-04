@@ -3,6 +3,14 @@ class_name PTT extends Object
 var _data: Dictionary = {}
 
 var time_short_notation := false
+var hours_only_notation := false
+var options_visible := true
+var m1_visible := true
+var m2_visible := true
+var cs_visible := true
+var ls_visible := true
+var too_visible := true
+var sd_visible := true
 
 func _init():
 	_data = PTTUtils.load_data()
@@ -19,6 +27,14 @@ func _init():
 		_data[PTTUtils.SD] = now
 	
 	time_short_notation = _data[PTTUtils.SN]
+	hours_only_notation = _data[PTTUtils.HO]
+	options_visible = _data[PTTUtils.OP]
+	m1_visible = _data[PTTUtils.M1vis]
+	m2_visible= _data[PTTUtils.M2vis]
+	cs_visible= _data[PTTUtils.HCS]
+	ls_visible= _data[PTTUtils.HLS]
+	too_visible= _data[PTTUtils.HTD]
+	sd_visible= _data[PTTUtils.HSD]
 
 func has_data() -> bool:
 	return !_data.is_empty()
