@@ -15,19 +15,13 @@ extends Control
 @export var m2_container: VBoxContainer
 @export var options_container: GridContainer
 @export_category("Options")
-@export var cb_show_options: CheckBox
+@export var cb_show_options: Button
 @export var cb_hideM1: CheckBox
 @export var cb_hideM2: CheckBox
 @export var cb_hidecs: CheckBox
 @export var cb_hidels: CheckBox
 @export var cb_hidetoo: CheckBox
 @export var cb_hidesd: CheckBox
-
-
-
-
-
-
 
 const TICK_TIME: float = 1
 
@@ -141,6 +135,10 @@ func _on_options_check_box_toggled(toggled_on):
 	PTTUtils.ptt.options_visible= toggled_on
 	PTTUtils.ptt.set_data(PTTUtils.OP, PTTUtils.ptt.options_visible)
 	options_container.visible= PTTUtils.ptt.options_visible
+	if toggled_on:
+		cb_show_options.text= "Hide Options"
+	else:
+		cb_show_options.text= "Show Options"
 
 
 func _on_hide_cs_toggled(toggled_on):

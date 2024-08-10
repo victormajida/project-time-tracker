@@ -137,7 +137,7 @@ static func color_temp(session_time: int) -> String:
 static func bb_text(title: String, time: float, dhms: bool = false) -> String:
 	var _time_format: String = time_format(time)
 	if (dhms):
-		_time_format = secondsToDhms(time, true)
+		_time_format = secondsToDhms(time, true, false)
 	var _bb_color: String = color_temp(time)
 	var _str := "[center]%s\n[color=%s]%s[/color][/center]" % [title, _bb_color, _time_format]
 	return _str
