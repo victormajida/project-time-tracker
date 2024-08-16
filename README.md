@@ -12,6 +12,8 @@ Works with Godot 4.2+
 * Overall combined real time.
 * Overall on/off days since tracking started.
 * Automatic tracking start date.
+* 2 tracked Milestones
+* Different time notation options (short, hours, dhms).
 
 ## Installation
 * Clone this repository or download it as ZIP. Copy the `addons/project_time_tracker` folder into your project's addons folder.
