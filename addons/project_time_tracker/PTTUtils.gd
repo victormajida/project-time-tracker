@@ -10,8 +10,19 @@ const TT := "tt"    # Tracking Total Time
 const TD := "td"    # Total On/Off Days
 const LO := "lo"    # Last Opened Date
 const SN := "sn"    # Short Notation Setting
+const HO := "ho"	# Hours Only Setting
+const M1 := "m1"	# Milestone1 Time Tracking
+const M2 := "m2"	# Milestone2 Time Tracking
+const M1vis := "m1vis"	# Show/Hide Milestone1
+const M2vis := "m2vis"	# Show/Hide Milestone2
+const OP := "op"	# Show/Hide Options
+const HCS := "hcs"	# Show/Hide Current Session
+const HLS := "hls"	# Show/Hide Last Session
+const HTD := "htd"	# Show/Hide Total On/Off Days
+const HSD := "hsd"	# Show/Hide Start Date
 
-const defaults = { ST: 0, LS: 0, TT: 0, TD: 0, SD: 0, LO: "", SN: false }
+const defaults = { ST: 0, LS: 0, TT: 0, TD: 0, SD: 0, LO: "", SN: false, 
+	HO: false, M1 : 0, M2 : 0, M1vis: true, M2vis: true, OP: true, HCS: true, HLS: true, HTD: true, HSD: true}
 
 static var ptt: PTT = PTT.new()
 
@@ -58,20 +69,29 @@ static func time_format(time: int) -> String:
 	
 	return str
 
-static func secondsToDhms(seconds: int, short_notation: bool = false) -> String:
-	var d: float = seconds / (3600 * 24)
-	var h: float = fmod(seconds, 3600 * 24) / 3600
-	var m: float = fmod(seconds, 3600) / 60
-	var s: float = fmod(seconds, 60)
+static func secondsToDhms(seconds: int, short_notation: bool = false, hours_only: bool= false) -> String:
+	if not hours_only:
+		var d: float = seconds / (3600 * 24)
+		var h: float = fmod(seconds, 3600 * 24) / 3600
+		var m: float = fmod(seconds, 3600) / 60
+		var s: float = fmod(seconds, 60)
 	
-	var dDisplay: String = check_plural("day", d, short_notation)
-	var hDisplay: String = check_plural("hour", h, short_notation)
-	var mDisplay: String = check_plural("minute", m, short_notation)
-	var sDisplay: String = check_plural("second", s, short_notation)
+		var dDisplay: String = check_plural("day", d, short_notation)
+		var hDisplay: String = check_plural("hour", h, short_notation)
+		var mDisplay: String = check_plural("minute", m, short_notation)
+		var sDisplay: String = check_plural("second", s, short_notation)
 	
-	var display: String = dDisplay + hDisplay + mDisplay + sDisplay
-	display = display.left(-2)
-	return "~ " + display
+		var display: String = dDisplay + hDisplay + mDisplay + sDisplay
+		display = display.left(-2)
+		return "~ " + display
+	else:
+		var h: float = seconds / 3600.0
+		var hDisplay: String = pluralize_unit("hour", h, short_notation)
+		
+		var display: String = hDisplay
+		display = display.left(-2)
+		return "~ " + display
+
 
 static func daysToYMD(days: int, short_notation: bool = false) -> String:
 	var Y: float = days / 365
@@ -92,6 +112,13 @@ static func check_plural(str: String, num: int, short: bool = false) -> String:
 		var result: String = str if (num == 1) else (str + "s")
 		display = "%d%s, " % [num, result[0]] if short else "%d %s, " % [num, result]
 	return display
+	
+static func pluralize_unit(str: String, num: float, short: bool = false) -> String:
+	var display := ""
+	if num > 0.0:
+		var result: String = str if (num <= 1.0) else (str + "s")
+		display = "%2.2f%s, " % [num, result[0]] if short else "%2.2f %s, " % [num, result]
+	return display
 
 static func color_temp(session_time: int) -> String:
 	var str_color := "green"
@@ -110,7 +137,7 @@ static func color_temp(session_time: int) -> String:
 static func bb_text(title: String, time: float, dhms: bool = false) -> String:
 	var _time_format: String = time_format(time)
 	if (dhms):
-		_time_format = secondsToDhms(time, true)
+		_time_format = secondsToDhms(time, true, false)
 	var _bb_color: String = color_temp(time)
 	var _str := "[center]%s\n[color=%s]%s[/color][/center]" % [title, _bb_color, _time_format]
 	return _str
@@ -125,17 +152,19 @@ static func tracking_start_time() -> int:
 	return ptt._data[PTTUtils.SD]
 
 # returns the total (combined sessions) time integer.
-static func total_active_time() -> int:
-	return ptt._data[PTTUtils.TT]
+static func total_active_time(util := PTTUtils.TT) -> int:
+	return ptt._data[util]
 	
 # returns the total active time in readable string format, suffix defaults to "elapsed" -> "6 hours 2 minutes elapsed"
-static func total_active_time_string(suffix: String = "elapsed") -> String:
-	var dhms: String = PTTUtils.secondsToDhms(total_active_time(), true)
+static func total_active_time_string(suffix: String = "elapsed", util:= PTTUtils.TT) -> String:
+	var dhms: String = PTTUtils.secondsToDhms(total_active_time(util), true)
 	return dhms + " " + suffix
+
 
 # returns the integer of total days of work on the project.
 static func total_period() -> int:
 	return ptt._data[PTTUtils.TD]
+	
 
 # returns the total days of work on the project in readable string format, suffix defaults to "elapsed" -> "1 month 3 days... elapsed"
 static func total_period_string(suffix: String = "elapsed") -> String:

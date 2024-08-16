@@ -1,8 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://byvcnatlevf76"]
+[gd_scene load_steps=9 format=3 uid="uid://byvcnatlevf76"]
 
 [ext_resource type="Script" path="res://addons/project_time_tracker/ptt_dock.gd" id="1_7wcfh"]
 
-[node name="Project Time Tracker" type="Control" node_paths=PackedStringArray("lbl_CST", "lbl_LST", "lbl_TOOD", "cb_sn", "lbl_StartDate")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mlsl"]
+content_margin_left = 5.0
+content_margin_top = 1.0
+content_margin_right = 5.0
+content_margin_bottom = 1.0
+bg_color = Color(0.0768359, 0.0768358, 0.0768358, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3oa7o"]
+content_margin_left = 5.0
+content_margin_top = 1.0
+content_margin_right = 5.0
+content_margin_bottom = 1.0
+bg_color = Color(0.336608, 0.336608, 0.336608, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64oo5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1mgc"]
+content_margin_left = 5.0
+content_margin_top = 1.0
+content_margin_right = 5.0
+content_margin_bottom = 1.0
+bg_color = Color(0.0768359, 0.0768358, 0.0768358, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7e4fq"]
+content_margin_left = 5.0
+content_margin_top = 1.0
+content_margin_right = 5.0
+content_margin_bottom = 1.0
+bg_color = Color(0.336608, 0.336608, 0.336608, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gyge7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1gh3k"]
+
+[node name="Project Time Tracker" type="Control" node_paths=PackedStringArray("lbl_CST", "lbl_LST", "lbl_TOOD", "lbl_M1T", "lbl_M2T", "cb_sn", "cb_ho", "M1_button", "M2_button", "lbl_StartDate", "m1_container", "m2_container", "options_container", "cb_show_options", "cb_hideM1", "cb_hideM2", "cb_hidecs", "cb_hidels", "cb_hidetoo", "cb_hidesd")]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -14,8 +64,23 @@ script = ExtResource("1_7wcfh")
 lbl_CST = NodePath("ScrollContainer/MarginContainer/VBoxContainer/CurrentSession")
 lbl_LST = NodePath("ScrollContainer/MarginContainer/VBoxContainer/LastSession")
 lbl_TOOD = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/TotalOnOffDays")
-cb_sn = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/CheckBox")
+lbl_M1T = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Milestone1")
+lbl_M2T = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Milestone2")
+cb_sn = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/CheckBox")
+cb_ho = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HoursOnlyCheckBox")
+M1_button = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/SetM1Button")
+M2_button = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SetM2Button")
 lbl_StartDate = NodePath("ScrollContainer/MarginContainer/VBoxContainer/StartDate")
+m1_container = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer")
+m2_container = NodePath("ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2")
+options_container = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer")
+cb_show_options = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton")
+cb_hideM1 = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideM1")
+cb_hideM2 = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideM2")
+cb_hidecs = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideCS")
+cb_hidels = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideLS")
+cb_hidetoo = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideTotalOnOff")
+cb_hidesd = NodePath("ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideStartDate")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -42,40 +107,161 @@ theme_override_constants/separation = 16
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Current Session
-[color=green]05:46[/color][/center]"
+[color=green]01:36[/color][/center]"
 fit_content = true
 
 [node name="LastSession" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Last Session
-[color=green]~ 4s[/color][/center]"
+[color=green]~ [/color][/center]"
 fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Milestone1" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[center]Time Since Milestone 1
+[color=white]~ 0.07h[/color]"
+fit_content = true
+
+[node name="SetM1Button" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0mlsl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3oa7o")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_64oo5")
+text = "Set Milestone 1"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Milestone2" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[center]Time Since Milestone 2
+[color=white]~ 0.07h[/color]"
+fit_content = true
+
+[node name="SetM2Button" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_l1mgc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7e4fq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gyge7")
+text = "Set Milestone 2"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
 
 [node name="TotalOnOffDays" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/line_separation = 4
 bbcode_enabled = true
-text = "Combined Time Over [color=gold]1 Day[/color]
-[color=white]~ 24 minutes, 26 seconds[/color]"
+text = "Combined Time Over [color=gold]3 Days[/color]
+[color=white]~ 8.87h[/color]"
 fit_content = true
 autowrap_mode = 2
 
-[node name="CheckBox" type="CheckBox" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_pressed_color = Color(0.901961, 0.905882, 0.909804, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l1mgc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7e4fq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l1mgc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1gh3k")
+toggle_mode = true
+button_pressed = true
+text = "Hide Options"
+
+[node name="OptionsContainer" type="GridContainer" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+columns = 2
+
+[node name="CheckBox" type="CheckBox" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+button_pressed = true
 text = "Short Notation"
+
+[node name="HoursOnlyCheckBox" type="CheckBox" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+button_pressed = true
+text = "Hours Only"
+
+[node name="HideM1" type="CheckBox" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+button_pressed = true
+text = "Show
+Milestone 1"
+
+[node name="HideM2" type="CheckBox" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+button_pressed = true
+text = "Show
+Milestone 2"
+
+[node name="HideCS" type="CheckBox" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Show Current
+Session"
+
+[node name="HideLS" type="CheckBox" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Show Last
+Session"
+
+[node name="HideTotalOnOff" type="CheckBox" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Show
+Total Time"
+
+[node name="HideStartDate" type="CheckBox" parent="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Show
+Start Date"
 
 [node name="StartDate" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Tracking Started:
-2024-05-23 15:20:40"
+2024-08-04 00:15:34"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/SetM1Button" to="." method="_on_set_m_1_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SetM2Button" to="." method="_on_set_m_2_button_pressed"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_check_box_toggled"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HoursOnlyCheckBox" to="." method="_on_hours_only_check_box_toggled"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideM1" to="." method="_on_hide_m_1_toggled"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideM2" to="." method="_on_hide_m_2_toggled"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideCS" to="." method="_on_hide_cs_toggled"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideLS" to="." method="_on_hide_ls_toggled"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideTotalOnOff" to="." method="_on_hide_total_on_off_toggled"]
+[connection signal="toggled" from="ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/OptionsContainer/HideStartDate" to="." method="_on_hide_start_date_toggled"]
